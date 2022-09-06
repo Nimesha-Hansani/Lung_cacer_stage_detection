@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[14]:
+# In[1]:
 
+
+#Importing Libraries
 
 import os
 import pydicom
@@ -12,15 +14,15 @@ import matplotlib.pyplot as plt
 from easyfsl.utils import plot_images, sliding_average
 
 
-# In[2]:
+# In[16]:
 
 
 root_path ='C:/Nimesha/MSC_UOM/Research/Lung_cancer_stage_detection/Data/Support'
 
 def load_scan(path):
     slices = [pydicom.dcmread(root_path + '/' + s) for s in os.listdir(path)]
-    slices = [s for s in slices if 'SliceLocation' in s]
     
+    slices = [s for s in slices if 'SliceLocation' in s]
     try:
         slice_thickness = np.abs(slices[0].ImagePositionPatient[2] - slices[1].ImagePositionPatient[2])
     except:
@@ -28,10 +30,17 @@ def load_scan(path):
     
     for s in slices:
         s.SliceThickness = slice_thickness
-    return slices
+
+    labels = [  (((x['PatientID']).value).split('-')[1])[0] for x in slices if 'PatientID' in x]
+    
+    new_labels = []
+    for character in labels:
+        new_labels.append(ord(character))
+  
+    return slices,new_labels
 
 
-# In[3]:
+# In[17]:
 
 
 def get_pixels_hu(scans):
@@ -55,18 +64,17 @@ def get_pixels_hu(scans):
     return np.array(image, dtype=np.int16)
 
 
-# In[16]:
+# In[26]:
 
 
 patient_dicom=load_scan(root_path)
-patient_pixels = get_pixels_hu(patient_dicom)
+
+patient_pixels = get_pixels_hu(patient_dicom[0])
 patient_tensor= torch.from_numpy(patient_pixels)
 
-
-# In[ ]:
-
-
-plot_images(patient_tensor, "support images", images_per_row=5)
+example_support_images=  patient_tensor
+example_support_labels = patient_dicom[1]
+example_support_labels=  torch.Tensor(example_support_labels)
 
 
 # In[ ]:
