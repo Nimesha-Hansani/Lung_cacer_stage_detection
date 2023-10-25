@@ -11,9 +11,10 @@ In prototypical network 4 different feature extraction methods were used.
 - DenseNet
 - CNN
 
-Below to files contain the full python script for two models.
-Prototypical_Network.py
-Siamese_Neural_Network.py
+After testing through above for feature extraction models,highest accuracy recorded from CNN.
+
+Under the implementation folder your can find our the complete implementation.
+
 
 
 
