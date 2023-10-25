@@ -13,7 +13,7 @@ In prototypical network 4 different feature extraction methods were used.
 
 After testing through above for feature extraction models,highest accuracy recorded from CNN.
 
-Under the implementation folder your can find our the complete implementation.
+Under the implementation folder your can find out the complete implementation.
 
 
 
