@@ -15,6 +15,10 @@ After testing through above for feature extraction models,highest accuracy recor
 
 Under the implementation folder your can find out the complete implementation.
 
+1. Download Prediction Folder
+2. Install PIP install streamlit
+3. streamlit run App.py
+
 
 
 
