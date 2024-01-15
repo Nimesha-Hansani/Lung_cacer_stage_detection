@@ -13,7 +13,9 @@ In prototypical network 4 different feature extraction methods were used.
 
 
 
-Under the implementation folder your can find out the source code for each feature extraction method.To run the follow the below three steps.
+Under the implementation folder your can find out the source code for each feature extraction method.
+
+To run the App, follow the below three steps.
 
 1. Download Prediction Folder
 2. Install PIP install streamlit
